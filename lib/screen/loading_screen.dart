@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_project/models/location.dart';
+import 'package:weather_project/models/weather.dart';
 import 'package:weather_project/screen/weather_screen.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -21,9 +22,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   Future<void> getData() async {
-    location = Location();
+    Weather weather = Weather();
 
-    dynamic weatherData = await location?.getLocation();
+    dynamic weatherData = await weather.getCurrentWeather();
 
     // ignore: use_build_context_synchronously
     Navigator.push(

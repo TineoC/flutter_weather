@@ -1,4 +1,24 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:weather_project/models/location.dart';
+import 'package:weather_project/models/networking.dart';
+
+final String? weatherApiKey = dotenv.env['WEATHER_DATA_API_KEY'];
+
 class Weather {
+  Future<dynamic> getCurrentWeather() async {
+    Location location = Location();
+
+    return await location.getLocation();
+  }
+
+  Future<dynamic> getCityWeather({required cityName}) async {
+    WeatherNetworking networkHelper = WeatherNetworking();
+
+    dynamic response = await networkHelper.fetchCityWeather(cityName: cityName);
+
+    return response;
+  }
+
   String getWeatherIcon(int condition) {
     if (condition < 300) {
       return '🌩';

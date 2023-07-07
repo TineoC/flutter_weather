@@ -29,6 +29,6 @@ class Location {
 
     WeatherNetworking networking = WeatherNetworking();
 
-    return await networking.fetchWeather(lat: latitude, lon: longitude);
+    return await networking.fetchCurrentWeather(lat: latitude, lon: longitude);
   }
 }
